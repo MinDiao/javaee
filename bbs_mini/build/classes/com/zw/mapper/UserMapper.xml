@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zw.mapper.UserMapper">
+
+	<!-- 首页帖子列表-一对多 -->
+	<resultMap type="MessageMybatisVo" id="msgmbvo">
+		<!-- 一表 -->
+		<id column="msgid" property="msgid"/>
+		<result column="userid" property="userid"/>
+		<result column="msgtopic" property="msgtopic"/>
+		<result column="msgcontents" property="msgcontents"/>
+		<result column="msgtime" property="msgtime"/>
+		<result column="msgip" property="msgip"/>
+		
+		<!-- 多表 -->
+		<collection property="countmsgs" ofType="CountMsg">
+			<id column="msgid" property="msgid"/>
+			<result column="accessCount" property="accessCount"/>
+			<result column="replyCount" property="replyCount"/>
+		</collection>
+	</resultMap>
+	
+	
+	
+	
+	<!-- 登录-根据用户名和密码查询 -->
+	<select id="login" parameterType="user" resultType="user">
+		select * from t_user where username = #{username} and `password` = #{password}
+	</select>
+	
+	
+	<!-- 添加主题 -->
+	<insert id="addMessage" parameterType="user">
+		INSERT INTO t_message(msgtopic, msgcontents) VALUES(#{msgtopic}, #{msgcontents})
+	</insert>
+	
+	
+	
+	
+	<!-- 首页帖子列表 -->
+	<select id="messageList" resultMap="msgmbvo">
+		SELECT m.msgid, m.msgtopic, u.username, c.accessCount, c.replyCount, m.msgtime 
+		FROM t_message m LEFT JOIN t_user u ON m.userid = u.userid 
+		LEFT JOIN t_countmsg c ON m.msgid = c.msgid 
+		WHERE 1 = 1 
+	</select>
+	
+</mapper>

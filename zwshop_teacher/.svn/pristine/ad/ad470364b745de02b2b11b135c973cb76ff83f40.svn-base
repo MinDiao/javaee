@@ -1,0 +1,14 @@
+package com.zw.zwshop.mapper;
+
+import com.github.abel533.mapper.Mapper;
+import com.zw.zwshop.pojo.Category;
+
+/**   
+ * @ClassName:  CategoryMapper   
+ * @Description:TODO 分类的mapper
+ * @author: lilong
+ * @date:   2019年1月8日 上午10:28:02       
+ */  
+public interface CategoryMapper extends Mapper<Category>{
+
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>springmvc01</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- 前端控制器 -->
+  <servlet>
+  	<servlet-name>springmvc</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<!-- 初始化设置参数信息 -->
+  	<init-param>
+  		<!-- springmvc配置 -->
+  		<param-name>contextConfigLocation</param-name>
+  		<!-- 做web项目时建议加上classpath指从src根目录下查找 -->
+  		<param-value>classpath:springmvc.xml</param-value>
+  	</init-param>
+  	<!-- Servlet默认是第一次请求启动 
+  			设置项目启动就会加载,里面填写的是加载的顺序 -->
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>springmvc</servlet-name>
+  	<!-- 处理的请求
+  			*.do	处理以.do结尾的请求,优点:不会拦截静态资源
+  			/	拦截所有请求,符合RESTFUL风格,缺点:会导致静态资源被拦截
+  			/*	错误写法
+  	 -->
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

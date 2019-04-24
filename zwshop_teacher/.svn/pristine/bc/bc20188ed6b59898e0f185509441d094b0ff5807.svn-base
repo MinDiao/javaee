@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>添加用户</title>
+		<link rel="stylesheet" href="../layui/css/layui.css" />
+		<script type="text/javascript" src="../js/jquery-3.1.1.js"></script>
+		<script type="text/javascript" src="../layui/layui.js"></script>
+		<script type="text/javascript" src="../js/md5.js" ></script>
+		<script type="text/javascript" src="../js/app.js"></script>
+	</head>
+
+	<body>
+
+		<div class="layui-container" style="margin-top: 30px;">
+			<form class="layui-form">
+				<div class="layui-form-item">
+					<label class="layui-form-label">用户名</label>
+					<div class="layui-input-inline">
+						<input type="text" class="layui-input" name="username" placeholder="请输入用户名" lay-verify="required" maxlength="16" />
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">密码</label>
+					<div class="layui-input-inline">
+						<input type="text" id="password" class="layui-input"  placeholder="请输入密码" lay-verify="required" maxlength="16" />
+					</div>
+				</div>
+				<div class="layui-form-item">
+					<label class="layui-form-label">确认密码</label>
+					<div class="layui-input-inline">
+						<input type="text" id="password_r" class="layui-input" placeholder="请再次输入密码" lay-verify="required" maxlength="16" />
+					</div>
+				</div>
+				<div class="layui-form-item layui-form-text">
+					<label class="layui-form-label">备注信息</label>
+					<div class="layui-input-block" style="width: 50%;">
+						<textarea name="remarks" placeholder="请输入备注信息" class="layui-textarea"></textarea>
+					</div>
+				</div>
+
+				<div class="layui-form-item">
+					<div class="layui-input-block">
+						<button class="layui-btn" lay-submit lay-filter="add">提交</button>
+						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						<button class="layui-btn"><i class="layui-icon layui-icon-return"></i></button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript" src="../js/common/sys_user_add.js" ></script>
+
+</html>

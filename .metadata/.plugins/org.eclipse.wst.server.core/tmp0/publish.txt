@@ -1,0 +1,4 @@
+#Tomcat publish data
+#Thu Mar 28 01:25:40 CST 2019
+org.eclipse.jst.jee.server\:/binary\:C\:\\Study\\Programs\\maven\\repo\\org\\springframework\\spring-web\\4.3.7.RELEASE\\spring-web-4.3.7.RELEASE.jar=C\:\\Study\\Programs\\apache-tomcat-8.0.9\\webapps\\jdm\\WEB-INF\\lib\\spring-web-4.3.7.RELEASE.jar
+org.eclipse.jst.jee.server\:jdm=C\:\\Study\\Programs\\apache-tomcat-8.0.9\\webapps\\jdm

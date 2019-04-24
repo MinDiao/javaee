@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Hibernate-01&apos; to &apos;tz_hibernate-01&apos;" description="Rename resource &apos;Hibernate-01&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Hibernate-01" name="tz_hibernate-01" stamp="1544022640862" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;tz_hibernate-01&apos; to &apos;tz_hibernate_01&apos;" description="Rename resource &apos;tz_hibernate-01&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/tz_hibernate-01" name="tz_hibernate_01" stamp="1544022649234" updateReferences="true"/>
+</session>

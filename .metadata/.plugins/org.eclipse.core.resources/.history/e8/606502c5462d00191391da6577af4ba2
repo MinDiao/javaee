@@ -1,0 +1,40 @@
+package com.jdm.jdmshop.service.impl;
+
+import java.util.List;
+
+import com.jdm.jdmshop.mapper.ItemMapper;
+import com.jdm.jdmshop.pojo.Item;
+import com.jdm.jdmshop.service.ItemService;
+
+/**
+ * 
+ * @ClassName:  ItemServiceImpl   
+ * @Description: 商品物业逻辑层实现类 
+ * @author: LiuJinrong
+ * @date:   2019年2月10日 下午5:47:42
+ */
+public class ItemServiceImpl implements ItemService {
+	
+	/**
+	 * 注入Mapper
+	 */
+	private ItemMapper ItemMapper;
+
+	
+	/**
+	 * 查询商品
+	 */
+	@Override
+	public List<Item> select(Item item) {
+
+		return ItemMapper.select(item);
+	}
+	
+
+}
+
+
+
+
+
+

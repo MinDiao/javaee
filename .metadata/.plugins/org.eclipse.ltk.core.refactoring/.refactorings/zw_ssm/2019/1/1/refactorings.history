@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;CORSFilter.java&apos; to &apos;filter&apos;&#x0D;&#x0A;- Original project: &apos;zw_ssm&apos;&#x0D;&#x0A;- Destination element: &apos;filter&apos;&#x0D;&#x0A;- Original element: &apos;com.zw.filter.CORSFilter.java&apos;" description="Copy compilation unit" element1="/src&lt;com.zw.filter{CORSFilter.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1546676139708" target="/zwshop/src/main/java/com/zw/zwshop/filter" units="1" version="1.0"/>
+</session>

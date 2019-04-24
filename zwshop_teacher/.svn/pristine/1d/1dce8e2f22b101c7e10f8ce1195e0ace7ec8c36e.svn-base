@@ -1,0 +1,4 @@
+#文件保存的目录
+config.path=D:/upload/
+#项目路径
+config.basePath=http://localhost:8080/zwshop/

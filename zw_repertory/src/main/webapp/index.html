@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>商品一览检索画面</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="css/layui.css">
+    <link rel="stylesheet" href="css/myPagination.css">
+    <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/vue.min.js"></script>
+<!--     <script type="application/javascript" src="layui.js"></script> -->
+    <script type="text/javascript" src="js/myPagination.js"></script>
+    <script src="js/my/index.js"></script>
+
+    <style>
+        .all{
+            width: 800px;
+            margin: 100px auto 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="all" id="app">
+    	<!-- 单选框 -->
+        <div>
+           	<label><input v-model.trim='repertoryQuery.listStatus' type="radio" name="onoff" value="0">贩卖可</label>
+           	<label><input v-model.trim='repertoryQuery.listStatus' type="radio" name="onoff" value="1">贩卖不可</label>
+           	<label><input v-model.trim='repertoryQuery.listStatus' type="radio" name="onoff" value="">全部</label>
+        </div>
+        
+        <form class="layui-form" action="" onsubmit="return false">
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品名称：</label>
+                <div class="layui-input-block">
+                    <input v-model.trim='repertoryQuery.listName' type="text" name="title" required  lay-verify="required" placeholder="请输入商品名称" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品价格：</label>
+                <div class="layui-input-block" style="overflow: hidden;">
+                    <input v-model.trim='repertoryQuery.listBeginPrice' style="float: left; width: 40%; margin-right: 5%;" type="text" name="title" required  lay-verify="required" placeholder="请输入商品价格" autocomplete="off" class="layui-input">
+                    <p style="float: left; margin-right: 5%;">~</p>
+                    <input v-model.trim='repertoryQuery.listEndPrice' style="float: left; width: 40%; margin-right: 5%;" type="text" name="title" required  lay-verify="required" placeholder="请输入商品价格" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <!-- <div class="layui-form-item">
+                <label class="layui-form-label">商品状态：</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="onoff" value="0" title="贩卖可" checked>
+                    <input type="radio" name="onoff" value="1" title="贩卖不可">
+                    <input type="radio" name="onoff" value="" title="全部">
+                </div>
+            </div> -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">贩卖期间：</label>
+                <div class="layui-input-block" style="overflow: hidden;">
+                    <input v-model.trim='repertoryQuery.listBegindate' style="float: left; width: 40%; margin-right: 5%;" type="date" name="title" required  lay-verify="required" placeholder="请输入贩卖前期间" autocomplete="off" class="layui-input">
+                    <p style="float: left; margin-right: 5%;">~</p>
+                    <input v-model.trim='repertoryQuery.listEnddate' style="float: left; width: 40%; margin-right: 5%;" type="date" name="title" required  lay-verify="required" placeholder="请输入贩卖后期间" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item" style="overflow: hidden;">
+        		<div class="layui-input-block"  style="float: right;">
+                    <button class="layui-btn" @click='getRepertorySelectByFuzzy'>检索</button>
+                    <button class="layui-btn layui-btn-primary" @click='repertoryAdd'>添加</button>
+                </div>
+            </div>
+        </form>
+       	 
+
+
+        <!--展示-->
+        <table class="layui-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>商品名</th>
+                <th>商品状态</th>
+                <th>商品代码</th>
+                <th>贩卖开始时间</th>
+                <th>贩卖结束时间</th>
+                <th>价格</th>
+                <th>库存数</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for='rl in repertoryList'>
+                <th>{{rl.shopId}}</th>
+                <th>{{rl.listName}}</th>
+                <th v-show='rl.listStatus == 0'>贩卖可</th>
+                <th v-show='rl.listStatus == 1'>贩卖不可</th>
+                <th>{{rl.listCode}}</th>
+                <th>{{rl.listBegindate}}</th>
+                <th>{{rl.listEnddate}}</th>
+                <th>{{rl.listPrice}}</th>
+                <th>{{rl.repertoryCount.countNumber}}</th>
+            </tr>
+            </tbody>
+        </table>
+        
+        <!-- 分页区 -->
+		<div id="pagination" class="pagination"></div>
+    </div>
+
+<!--     <script>
+        //Demo
+        layui.use('form', function(){
+            var form = layui.form;
+            
+            
+            
+            form.on('radio', function(data){
+            	// 更新渲染
+            	form.render('radio');
+            	//console.log(data.value)
+            	// 填充至vue的data对象中
+            	vm.repertoryQuery = {
+            		listStatus: data.value
+            	}
+            	console.log(vm.repertoryQuery.listStatus)
+            })
+            
+            //监听提交
+            /* form.on('submit(formDemo)', function(data){
+                layer.msg(JSON.stringify(data.field));
+                return false;
+            }); */
+        });
+    </script> -->
+    
+    
+</body>
+</html>
+
+

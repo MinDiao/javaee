@@ -1,0 +1,26 @@
+package com.jdm.jdmshop.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.jdm.jdmshop.service.PictureService;
+
+/**
+ * 
+ * @ClassName:  PictureController   
+ * @Description: 图片路径控制层 
+ * @author: LiuJinrong
+ * @date:   2019年2月10日 上午11:28:01
+ */
+@Controller
+@RequestMapping("/picture")
+public class PictureController {
+	
+	/**
+	 * 注入Servier
+	 */
+	@Autowired
+	private PictureService pictureService;
+
+}

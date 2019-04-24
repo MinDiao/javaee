@@ -1,0 +1,5 @@
+package com.jdm.jdmshop.service;
+
+public interface ItemService {
+
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 配置springbean -->
+	<bean id='user' class="cn.bean.User"></bean>
+	<!-- 配置通知类 -->
+	<bean id="myAdvice" class="cn.demo.MyAdvice"></bean>
+	
+	<!-- 配置aop -->
+	<aop:config>
+		<!-- 定义切面 ,并指定通知类-->
+		<aop:aspect ref="myAdvice">
+			<!-- 定义一个切点,使用AspectJ切点表达式 (写在切面的内外只是作用域的区别)
+					execution(返回类型 )
+					* 代表任意类型的, 或是类上所有的
+					.. 任意多个的, 0~N个。 如果在路径上,则指的是当前包和子包下的所有
+					
+					execution(* cn.*.*(..)) 返回的是任意类型的,cn包下的所有类,不包括子包下的。任意方法,任意参数。
+			 -->
+			<!-- <aop:pointcut expression="execution(* cn.bean.User.login())" id="cut1"/> -->
+			<aop:pointcut expression="execution(* cn..*.*(..))" id="cut1"/>
+		
+			<!-- 配置前通知,method:增强执行的方法 -->
+			<aop:before method="doBefore" pointcut-ref="cut1"/>
+			
+			<!-- 后通知, 又称为最终通知,无论如何都会执行的 -->
+			<aop:after method="doAfter" pointcut-ref="cut1"/>
+			
+			<!-- 返回后通知, 只有正常返回才会执行,如果上一个类没有向上抛出异常则此通知依然执行 -->
+			<aop:after-returning method="doReturnAfter" pointcut-ref="cut1"/>
+			
+			<!-- 异常通知, 只有spring接收到异常抛出的时候才会执行 -->
+			<aop:after-throwing method="doThrow" pointcut-ref="cut1"/>
+			
+			<!-- 环绕通知,在方法的执行前后进行一些增强
+						= 前通知 + 返回后通知
+			 -->
+			<aop:around method="doAround" pointcut-ref="cut1"/>
+		</aop:aspect>
+	</aop:config>
+</beans>

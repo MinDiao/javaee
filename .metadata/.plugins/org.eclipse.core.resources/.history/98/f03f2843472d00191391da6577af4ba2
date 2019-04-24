@@ -1,0 +1,28 @@
+package com.jdm.jdmshop.service;
+
+import java.util.List;
+
+import com.jdm.jdmshop.pojo.Item;
+
+/**
+ * 
+ * @ClassName:  ItemService   
+ * @Description: 商品业务逻辑层接口 
+ * @author: LiuJinrong
+ * @date:   2019年2月10日 下午5:42:53
+ */
+public interface ItemService {
+
+	
+	/**
+	 * 
+	 * @Description: 查询商品
+	 * @author: LiuJinrong
+	 * @date:   2019年2月10日 下午5:46:44    
+	 * @param item
+	 * @return
+	 */
+	List<Item> selectAll(Item item);
+	
+
+}

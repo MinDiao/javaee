@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd" 
+"hibernate-mapping-3.0.dtd">
+
+<!-- 配置表与实体对象的关系
+package属性:填写一个包名,在元素内部凡是需要书写完整路径的属性,都可以直接简写类名 -->
+<hibernate-mapping package="com.tz.entiy">
+	
+	<!-- 配置实体类与表的对应关系 -->
+	<class name="Customer" table="hibernate01">
+		
+		<!-- 配置主键映射的属性 -->
+		<id name="cust_id" column="cust_id">
+			
+			<generator class="native"></generator>
+			
+		</id>
+		
+		<!-- 配置初id之外的普通属性映射 -->
+		<property name="cust_name"></property>
+		<property name="cust_source"></property>
+		<property name="cust_industry"></property>
+		<property name="cust_level"></property>
+		<property name="cust_linkman"></property>
+		<property name="cust_phone"></property>
+		<property name="cust_moblie"></property>
+	
+	</class>
+	
+</hibernate-mapping>

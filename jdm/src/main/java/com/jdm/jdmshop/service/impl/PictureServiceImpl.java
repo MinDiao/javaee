@@ -1,0 +1,43 @@
+package com.jdm.jdmshop.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.jdm.jdmshop.mapper.PictureMapper;
+import com.jdm.jdmshop.pojo.Picture;
+import com.jdm.jdmshop.service.PictureService;
+
+/**
+ * 
+ * @ClassName:  PictureServiceImpl   
+ * @Description: 图片路径服务层实现类 
+ * @author: LiuJinrong
+ * @date:   2019年2月10日 上午11:16:57
+ */
+@Service
+public class PictureServiceImpl implements PictureService {
+	
+	/**
+	 * 注入Mapper
+	 */
+	@Autowired
+	private PictureMapper pictureMapper;
+
+	
+	/**
+	 * 按条件查询图片路径
+	 */
+	@Override
+	public List<Picture> Select(Picture picture) {
+		
+		return pictureMapper.select(picture);
+	}
+
+}
+
+
+
+
+

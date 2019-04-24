@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 4 elements to &apos;resources&apos;&#x0D;&#x0A;- Original project: &apos;zw_repertory_layui&apos;&#x0D;&#x0A;- Destination element: &apos;resources&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     db.properties&#x0D;&#x0A;     applicationContext.xml&#x0D;&#x0A;     log4j.properties&#x0D;&#x0A;     springmvc.xml" description="Copy files" element1="src/main/resources/db.properties" element2="src/main/resources/applicationContext.xml" element3="src/main/resources/log4j.properties" element4="src/main/resources/springmvc.xml" files="4" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1546655939843" target="/zwshop/src/main/resources" units="0" version="1.0"/>
+</session>

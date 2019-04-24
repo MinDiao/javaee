@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.tz.po.Person&apos; to &apos;Customer&apos;&#x0D;&#x0A;- Original project: &apos;tz_hibernate_crm&apos;&#x0D;&#x0A;- Original element: &apos;com.tz.po.Person&apos;&#x0D;&#x0A;- Renamed element: &apos;com.tz.po.Customer&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Person&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.tz.po{Person.java[Person" matchStrategy="1" name="Customer" qualified="false" references="true" similarDeclarations="false" stamp="1543979395691" textual="false" version="1.0"/>
+</session>

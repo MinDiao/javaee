@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workingSetManager>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1547102179903_1" label="hpe" name="hpe">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_spring02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ljr" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_myBatis01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_ssm" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zwshop_teacher" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/bbs_mini" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MyMaven" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/springmvc01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_spring03" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/RemoteSystemsTempFiles" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/MyMaven_teacher" type="4"/>
+<item elementID="=zwshop" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/springmvc02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_repertory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_spring04" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tz_hibernate_01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_ljrssm" type="4"/>
+<item elementID="=zw_repertory_layui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_myBatis01_assigment" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_spring01" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_springmvc03" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tz_hibernate_02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_myBatis02" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_mvnljrssm" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/zw_SpringAndMybatis" type="4"/>
+</workingSet>
+<workingSet editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1548380298897_6" label="me" name="me">
+<item elementID="=jdm" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/jdm" type="4"/>
+</workingSet>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1543328199540_0" label="Window Working Set" name="Aggregate for window 1543328199539"/>
+<workingSet aggregate="true" factoryID="org.eclipse.ui.internal.WorkingSetFactory" id="1548380416023_8" label="Multiple Working Sets" name="Aggregate:hpe:me:">
+<workingSet IMemento.internal.id="hpe"/>
+<workingSet IMemento.internal.id="me"/>
+</workingSet>
+<mruList name="me"/>
+<mruList name="hpe"/>
+</workingSetManager>

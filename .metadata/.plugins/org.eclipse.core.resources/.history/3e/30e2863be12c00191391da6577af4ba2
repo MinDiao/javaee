@@ -1,0 +1,14 @@
+package com.jdm.jdmshop.pojo;
+
+/**
+ * 
+ * @ClassName:  Picture   
+ * @Description: 图片存储路径实体类 
+ * @author: LiuJinrong
+ * @date:   2019年2月10日 上午1:27:35
+ */
+public class Picture {
+	
+	
+
+}

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jdm.jdmshop.mapper.ItemMapper">
+
+	<!-- 起别名 -->
+	<resultMap type="item" id="itemMap">
+		<id column="item_id" property="itemId"/>
+		<result column="cate_id" property="cateId"/>
+		<result column="item_title" property="itemTitle"/>
+		<result column="item_img" property="itemImg"/>
+		<result column="item_imgdetails" property="itemImgdetails"/>
+		<result column="item_desc" property="itemDesc"/>
+		<result column="is_recommend" property="isRecommend"/>
+		<result column="create_time" property="createTime"/>
+	</resultMap>
+	
+
+	<!-- 根据多个商品id查询多个商品 -->
+	<select id="selectList" parameterType="string" resultMap="itemMap">
+		select * from item where item_id in
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</select>
+	
+
+</mapper>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 访问地址为:http://localhost:8080/springmvc01/first.do -->
+	<bean class="cn.controller.FirstController" name="/first.do"></bean>
+	
+	<!-- 1.处理器映射器 HandlerMapping
+			功能:根据url查询处理器或者是拦截器
+			BeanNameUrlHandlerMapping: 把bean的名字作为请求的url
+	 -->
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+	
+	<!-- 2.处理器适配器
+			功能:配置处理器并去执行处理器
+			SimpleControllerHandlerAdapter,对所有实现了Controller接口的处理进行适配
+	 -->
+	<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+	
+	<!-- 3.视图解析器jsp -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+	
+</beans>

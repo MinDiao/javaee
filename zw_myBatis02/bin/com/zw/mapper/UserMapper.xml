@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace隔离sql -->
+<mapper namespace="com.zw.mapper.UserMapper">
+
+	<!-- 自定义返回结果 type: 返回的类型 (因为在全局配置文件中使用了别名,所以此处可以不需要写全路径) id： 自定义返回结果的名字 -->
+	<resultMap type="car" id="carMap">
+		<!-- id: 主键, 唯一标识 column: 数据库表中的主键字段名 property： 实体类中的属性名 column 与 property是映射关系 -->
+		<id column="carId" property="carId" />
+
+		<!-- 普通结果 -->
+		<result column="name" property="carName" />
+		<result column="userId" property="userId" />
+		<!-- 如果字段名和属性名一致,可以省略 -->
+	</resultMap>
+
+
+	<!-- 一对多 -->
+	<resultMap type="userVo" id="userCarMap">
+		<!-- 当使用一对多和一对一的时候,如果字段名和属性名一致,不可以省略 -->
+		<id column="id" property="id" />
+		<result column="username" property="username" />
+		<result column="birthday" property="birthday" />
+		<result column="sex" property="sex" />
+		<result column="address" property="address" />
+
+		<!-- collection: 集合,用于一对多 ofType: 也可以使用别名 -->
+		<collection property="cars" ofType="car">
+			<id column="carId" property="carId" />
+			<result column="name" property="carName" />
+			<result column="userId" property="userId" />
+		</collection>
+
+		<!-- association: 用于一对多 -->
+		<!-- <association property="" javaType=""></association> -->
+	</resultMap>
+
+
+
+
+
+
+	<!-- mapper动态 -->
+	<!-- 根据id查询 -->
+	<select id="selectById" parameterType="int" resultType="user">
+		select *
+		from user where id = #{id}
+	</select>
+
+
+
+
+
+	<!-- parameterType 支持类型 -->
+	<!-- hashmap传参 通过 #{map的key} 设置值, 如果没有此key,不会报错,那么取值是null -->
+	<select id="selctByMap" parameterType="map" resultType="user">
+		select *
+		from user where sex = #{sex} and address like '%${address}%'
+	</select>
+
+
+	<!-- 多参数查询: 方法一 无需指定输入参数类型 sql语句中条件使用 #{index} 下标来取值, 下标从0开始 -->
+	<select id="selectByParams1" resultType="user">
+		select * from user where
+		sex = #{0} and address = #{1}
+	</select>
+
+
+	<!-- 多参数查询: 方法二 接口参数使用@Param("key"),然后通过#{key}的方式取值,原理就是把当前的参数封装到了一个map中 -->
+	<select id="selectByParams2" resultType="user">
+		select * from user where
+		sex = #{sex} and address like '%${addr}%'
+	</select>
+
+
+
+
+
+
+	<!-- resultType 支持类型 -->
+	<!-- 查询所有汽车,pojo属性名与数据库字段名不匹配,方法一 -->
+	<select id="selectCar1" resultType="car">
+		SELECT carId AS carId, `name`
+		AS carName, userId FROM car
+	</select>
+
+
+	<!-- resultType 支持类型 -->
+	<!-- 查询所有汽车,pojo属性名与数据库字段名不匹配,方法二 -->
+	<select id="selectCar2" resultMap="carMap">
+		SELECT * FROM car
+	</select>
+
+
+
+
+
+
+	<!-- 一对多查询 -->
+	<select id="selectCars" parameterType="int" resultMap="userCarMap">
+		SELECT *
+		FROM `user` u LEFT JOIN car c ON u.id = c.userId WHERE u.id = #{id}
+	</select>
+
+
+
+
+	<!-- 动态sql -if -->
+	<!-- <select id="selectIf1" parameterType="user" resultType="user">
+		select * from user where 1 = 1
+		<if test="sex!=null and sex!=''">
+			and sex = #{sex}
+		</if>
+		<if test="address!=null and address!=''">
+			and address like '%${address}%'
+		</if>
+	</select> -->
+
+
+	<!-- where会去除多余的and、or -->
+	<select id="selectIf" parameterType="user" resultType="user">
+		select * from `user`
+		<where>
+			<if test="sex!=null and sex!=''">
+				and sex = #{sex}
+			</if>
+			<if test="address!=null and address!=''">
+				and address like '%${address}%'
+			</if>
+		</where>
+	</select>
+	
+	
+	
+	<!-- 修改 -->
+	<!-- <set>会去除多余的逗号 -->
+	<update id="updateUser" parameterType="user">
+		update user
+		<set>
+			<if test="address!=null and address!=''">
+				address = #{address},
+			</if>
+			<if test="username!=null and username!=''">
+				username = #{username},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	
+	
+	
+	<!-- 根据ids的集合进行批量删除 
+			collection: 传递过来的参数,可以是list, array(数组), map的key, pojo中的属性
+			item: 循环中的当前元素
+			index: 当前元素的下标
+			open: 循环的开始
+			close: 循环的结束
+			separator: 指定分隔符
+	-->
+	<delete id="deleteByIds" parameterType="list">
+		delete from user where id in
+		<foreach collection="list" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+

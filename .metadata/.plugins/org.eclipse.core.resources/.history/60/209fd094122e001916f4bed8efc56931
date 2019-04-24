@@ -1,0 +1,5 @@
+package com.jdm.jdmshop.mapper;
+
+public interface CategoryMapper {
+
+}

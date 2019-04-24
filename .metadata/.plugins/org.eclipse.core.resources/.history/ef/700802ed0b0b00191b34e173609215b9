@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/myPagination.css">
+<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+<script type="text/javascript" src="js/vue.js"></script>
+<script src="js/bootstrap.js"></script>
+<script type="text/javascript" src="js/myPagination.js"></script>
+<script type="text/javascript" src="js/ljr/app.js"></script>
+<script type="text/javascript" src="js/ljr/index.js"></script>
+<style type="text/css">
+	#user{
+		width: 1100px;
+		margin: 50px auto;
+	}
+	table{
+		text-align: center;
+	}
+	table td{
+		padding: 0 10px 20px;
+	}
+	#user .checkedDelete{
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<div id="user">
+		<!-- 查询区 -->
+		<form onsubmit="return false">
+			姓名：<input type="text" v-model.trim="username">&nbsp;&nbsp;&nbsp;
+			
+			 性别：<select v-model="sex">
+					<option value="">请选择</option>
+					<option value="0">男</option>
+					<option value="1">女</option>
+				</select> &nbsp;&nbsp;&nbsp;
+				
+			生日:	<input type="date" v-model="birthday">&nbsp;&nbsp;&nbsp;
+				<input type="button" class="btn btn-default" value="模糊搜索" @click='userSelectByFuzzy'>&nbsp;&nbsp;&nbsp;
+				
+				<!-- 添加用户 -->
+			<button type="button" class="btn btn-success" @click="userAddUpdate">添加用户</button>
+		</form>
+		<br>
+		<br>
+		
+		
+		<!-- 列表区 -->
+		<table>
+			<tr>
+				<!-- <td>id</td> -->
+				<td>姓名</td>
+				<td>生日</td>
+				<td>性别</td>
+				<td>地址</td>
+				<td>爱好</td>
+				<td>邮箱</td>
+				<td>创建时间</td>
+				<td>修改时间</td>
+				<td>操作</td>
+				<!--批量删除按钮-->
+				<td><button type="button" class="btn btn-warning" @click="userDeleteS">批量删除</button></td>
+			</tr>
+			<tr v-for="user in users">
+				<!-- <td>{{user.id}}</td> -->
+				<td>{{user.username}}</td>
+				<td>{{user.birthday}}</td>
+				<td>{{user.sex}}</td>
+				<td>{{user.address}}</td>
+				<td>{{user.love}}</td>
+				<td>{{user.email}}</td>
+				<td>{{user.createDate}}</td>
+				<td>{{user.updateDate}}</td>
+				<td>
+					<button type="button" class="btn btn-danger" @click="del(user.id)">删除</button>
+					<!-- 通过实参传递用户本来信息 -->
+					<button type="button" class="btn btn-default" @click="userAddUpdate(user.id)">修改</button>
+				</td>
+				<!--批量删除多选择框-->
+				<td><input class="checkedDelete" v-model="checked" :value="user.id" type="checkbox"></td>
+			</tr>
+		</table>
+		
+		
+		<!-- 分页区 -->
+		<div id="pagination" class="pagination"></div>
+		
+	</div>
+
+</body>
+
+</html>

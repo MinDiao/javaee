@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 命名空间 -->
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<!-- 读取资源文件 -->
+	<properties resource="db.properties"></properties>
+
+
+
+
+	<!-- 别名 -->
+	<typeAliases>
+		<!-- 给单个对象起别名的方式
+				type:给谁起别名
+				alias:别名
+		 -->
+		<!-- <typeAlias type="com.zw.pojo.User" alias="user"/> -->
+		
+		
+		<!-- 批量起别名 
+				name:包，扫描的方式给指定包下类起别名
+				别名是：类名(首字母大小写都可以) User user
+		-->
+		<package name="com.zw.pojo"/>
+	</typeAliases>
+
+
+
+
+
+	<!-- 
+		配置的运行环境,default:默认要加载的环境
+		当mybatis与spring整合后,以下配置将废除,不需要了
+	-->
+	<environments default="mysql">
+	
+		<environment id="mysql">
+		
+			<!-- 事务管理的配置 -->
+			<transactionManager type="JDBC"></transactionManager>
+			
+			<!-- 数据库连接池 -->
+			<!-- <dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://127.0.0.1:3306/mybatis?characterEncoding=utf-8"/>
+				<property name="username" value="root"/>
+				<property name="password" value="123456"/>
+			</dataSource> -->
+			
+			<dataSource type="POOLED">
+				<property name="driver" value="${jdbc.driver}"/>
+				<property name="url" value="${jdbc.url}"/>
+				<property name="username" value="${jdbc.username}"/>
+				<property name="password" value="${jdbc.password}"/>
+			</dataSource>
+			
+		</environment>
+	</environments>
+	
+	
+	<!-- 配置加载的映射文件 -->
+	<mappers>
+		<mapper resource="UserMapper.xml"/>
+	</mappers>
+</configuration>

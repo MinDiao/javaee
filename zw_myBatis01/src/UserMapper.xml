@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 命名空间 -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间,作用:用于隔离sql; namespace不能重复-->
+<mapper namespace="UserMapper">
+	
+	<!-- 第一个mybatis入门的sql,根据id查询用户信息 
+		
+			id: 用于标识映射文件的sql, 称为statement的id 唯一的,不能重复
+			
+			parameterType: 输入参数的类型;支持的类型:java基本类型,pojo,map
+			
+			#{}: 给占位符设置值(最后会被解析成普通的占位符)
+				当参数为基本类型时:#{}里面的参数任意 或者是#{value}
+				
+			resultType: 返回结果集类型;支持的类型:java基本类型,pojo,map,指的是单条记录的类型
+	-->
+	<select id="selectById" parameterType="int" resultType="User">
+		select * from user where id = #{id}
+	</select>
+	
+	
+	
+	<!-- 根据姓名模糊查询
+			${}: 字符串拼接,没有使用占位符,不安全,有sql注入的风险;
+				如果参数类型为基本类型,则${}里面的参数只能是${value}
+	 -->
+	<select id="selectByName1" parameterType="String" resultType="com.zw.pojo.User">
+		select * from user where username like '%${value}%'
+	</select>
+	
+	
+	
+	<!-- 取代${}字符串拼接,根据姓名模糊查询
+			${}: 字符串拼接,没有使用占位符,不安全,有sql注入的风险;
+				如果参数类型为基本类型,则${}里面的参数只能是${value}
+	 -->
+	<select id="selectByName2" parameterType="String" resultType="com.zw.pojo.User">
+		select * from user where username like #{username}
+	</select>
+	
+	
+	
+	<!-- 新增用户 
+			参数类型为自定义的pojo对象时,取值方式是 #{属性名}
+			
+			返回自增主键
+				keyProperty
+				useGeneratedKeys
+	-->
+	<insert id="addUser" parameterType="com.zw.pojo.User" keyProperty="id" useGeneratedKeys="true">
+		insert into user(username,birthday,sex,address) values(#{username},#{birthday},#{sex},#{address})
+	</insert>
+	
+	
+	
+	<!-- 修改用户 -->
+	<update id="updateUser" parameterType="com.zw.pojo.User">
+		update user set username = #{username}, address = #{address} where id = #{id}
+	</update>
+	
+
+
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="int">
+		delete from user where id = #{id}
+	</delete>
+	
+	
+</mapper>

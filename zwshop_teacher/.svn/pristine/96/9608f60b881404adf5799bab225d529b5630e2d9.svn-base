@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>登录</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="frame/static/css/style.css">
+		<link rel="icon" href="frame/static/image/code.png">
+	</head>
+
+	<body>
+
+		<div class="login-main">
+			<header class="layui-elip">后台登录</header>
+			<form class="layui-form">
+				<div class="layui-input-inline">
+					<input type="text" name="username" lay-verify="required" placeholder="账户名" autocomplete="off" maxlength="16" class="layui-input">
+				</div>
+				<div class="layui-input-inline">
+					<input type="password" name="password" lay-verify="required" placeholder="密码" autocomplete="off" maxlength="16" class="layui-input">
+				</div>
+				<div class="layui-input-inline login-btn">
+					<button class="layui-btn" lay-submit lay-filter="login">登录</button>
+				</div>
+				<hr/>
+				<!--<div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-primary">QQ登录</button>
+        </div>
+        <div class="layui-input-inline">
+            <button type="button" class="layui-btn layui-btn-normal">微信登录</button>
+        </div>-->
+				<p>
+					<a href="javascript:;" class="fl">立即注册</a>
+					<a href="javascript:;" class="fr">忘记密码？</a>
+				</p>
+			</form>
+		</div>
+		
+		<script type="text/javascript" src="js/jquery-3.1.1.js" ></script>
+		<script src="layui/layui.js"></script>
+		<script type="text/javascript" src="js/md5.js"></script>
+		
+		<script type="text/javascript">
+			var basePath = "http://127.0.0.1:8080/zwshop/";
+			layui.use(['form', 'layer'], function() {
+				// 操作对象
+				var form = layui.form;
+				// you code ...
+				form.on('submit(login)', function(data) {
+					//md5加密后 在去做登陆的判断
+					var pwd = data.field.password;
+					data.field.password = hex_md5(pwd);
+
+					$.ajax({
+						url: basePath + "sysLogin/login", 
+						type: "post",
+						data: data.field,
+						dataType: "json",
+						success: function(data) {
+							//console.log(JSON.stringify(data))
+							if(data.code == 0) {
+								layer.msg("登陆成功", { icon: 6 });
+								//把登陆信息存进sessionStorage
+								sessionStorage.setItem("loginUser",JSON.stringify(data.loginUser));
+								setTimeout(function() {
+									window.location.href = "index.html";
+								}, 2000);
+							} else {
+								layer.msg("登陆失败", { icon: 5 });
+							}
+						},
+						error: function() {
+							layer.msg("登陆失败", { icon: 5 });
+						}
+					})
+					return false;
+				})
+
+			});
+		</script>
+	</body>
+
+</html>

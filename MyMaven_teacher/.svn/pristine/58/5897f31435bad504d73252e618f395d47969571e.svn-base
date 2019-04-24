@@ -1,0 +1,18 @@
+package com.zw.MyMaven.service;
+
+import com.zw.MyMaven.pojo.User;
+
+/**
+ * @author HP
+ * 用户服务接口
+ */
+public interface UserService {
+
+	/**
+	 * 根据id查询用户信息
+	 * @param id
+	 * @return
+	 */
+	User selectById(int id);
+
+}

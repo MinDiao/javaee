@@ -1,0 +1,63 @@
+package com.zw.zwshop.pojo;
+
+
+/**   
+ * @ClassName:  Category   
+ * @Description:TODO 分类的实体类
+ * @author: lilong
+ * @date:   2019年1月5日 下午2:15:36       
+ */  
+public class Category {
+	
+	// 主键ID
+	private Integer cateId;
+	// 分类的名字
+	private String cateName;
+	// 上级分类id, 一级分类的父id为0
+	private Integer pId;
+	// 级别
+	private Integer level;
+	// 创建时间
+	private String createTime;
+	// 是否禁用,0:未禁用（默认值为0）,1:禁用
+	private Integer disable;
+	
+	
+	public Integer getCateId() {
+		return cateId;
+	}
+	public void setCateId(Integer cateId) {
+		this.cateId = cateId;
+	}
+	public String getCateName() {
+		return cateName;
+	}
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
+	}
+	public Integer getpId() {
+		return pId;
+	}
+	public void setpId(Integer pId) {
+		this.pId = pId;
+	}
+	public Integer getLevel() {
+		return level;
+	}
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+	public String getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(String createTime) {
+		this.createTime = createTime;
+	}
+	public Integer getDisable() {
+		return disable;
+	}
+	public void setDisable(Integer disable) {
+		this.disable = disable;
+	}
+
+}

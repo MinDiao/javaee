@@ -1,0 +1,24 @@
+package com.jdm.jdmshop.service;
+
+import com.jdm.jdmshop.pojo.Picture;
+
+/**
+ * 
+ * @ClassName:  PictureService   
+ * @Description: 图片路径服务层接口 
+ * @author: LiuJinrong
+ * @date:   2019年2月10日 上午11:13:33
+ */
+public interface PictureService {
+	
+	/**
+	 * 
+	 * @Description: 按条件查询图片路径
+	 * @author: LiuJinrong
+	 * @date:   2019年2月10日 上午11:15:32    
+	 * @param picture
+	 * @return
+	 */
+	Picture<List> Select(String ptype);
+
+}

@@ -1,0 +1,39 @@
+package com.zw.MyMaven.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.zw.MyMaven.pojo.User;
+import com.zw.MyMaven.service.UserService;
+
+
+/**
+ * @author HP
+ * 用户controller
+ */
+@Controller
+@RequestMapping("user")
+public class UserController {
+
+	@Autowired
+	private UserService userService;
+	
+	/**
+	 * 根据id查询用户信息
+	 */
+	@RequestMapping(value="selectById",method=RequestMethod.GET)
+	public String selectById(int id,Model model){
+		User user = null;
+		try {
+			user = userService.selectById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("user", user);
+		return "user";//逻辑视图名
+	}
+	
+}

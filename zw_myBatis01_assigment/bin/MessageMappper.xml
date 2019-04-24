@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 命名空间 -->
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace用来隔离sql -->
+<mapper namespace="MessageMapper">
+
+	<!-- 模糊查询 -->
+	<select id="selectByName" parameterType="String" resultType="com.zw.pojo.Message">
+		select * from t_message where msgtopic like #{msgtopic}
+	</select>
+	
+</mapper>

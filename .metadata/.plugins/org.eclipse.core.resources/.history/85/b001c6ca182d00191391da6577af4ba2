@@ -1,0 +1,13 @@
+package com.jdm.jdmshop.service;
+
+/**
+ * 
+ * @ClassName:  ItemService   
+ * @Description: 商品业务逻辑层接口 
+ * @author: LiuJinrong
+ * @date:   2019年2月10日 下午5:42:53
+ */
+public interface ItemService {
+	
+
+}

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 需要配置的信息:
+		1.会话工厂
+		2.mapper代理bean
+		3.数据库连接池 -->
+		
+	<!-- 读取外部资源文件 -->
+	<context:property-placeholder location="classpath:db.properties"/>
+		
+	<!-- 1.配置数据库连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driver}"></property>
+		<property name="jdbcUrl" value="${jdbc.url}"></property>
+		<property name="user" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+	
+	<!-- 2.配置会话工厂
+			id="sqlSessionFactory" 默认查询此名字,并不需要手动配置	
+	 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 2.1注入数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<!-- 2.2加载mybatis的全局配置文件 -->
+		<!-- <property name="configLocation" value="classpath:mybatis.xml"></property> -->
+		<!-- 2.3别名 -->
+		<property name="typeAliasesPackage" value="com.zw.pojo"></property>
+		<property name="typeAliasesPackage2" value="com.zw.doto"></property>
+	</bean>
+	
+	<!-- 3.spring来管理mapper代理bean,使用包扫描的方式,批量创建mapper的代理bean;
+			bean的名字就是接口的名字,首字母小写
+	 -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 指定mapper接口所在的包路径 -->
+		<property name="basePackage" value="com.zw.mapper"></property>
+	</bean>
+	
+	<!-- 扫描注解 -->
+	<context:component-scan base-package="com.zw.service.*"></context:component-scan>
+	
+	
+	
+	
+	
+	<!-- 4.spring事务管理的配置 -->
+	<!-- 4.1 事务管理器, spring的声明式事务(aop思想,并不是之前在代码中入侵的方式) -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- 注入数据源 -->
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 开启事务注解方式 
+			transaction-manager 如果名字为默认,则可以省略书写transaction-manager
+	-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>

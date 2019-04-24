@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zw.zw_repertory.mapper.RepertoryMapper">
+	
+	<!-- 用户列表+分页+模糊查询-->
+	<!-- 起别名后例如UserDto实体类第一个大小写都行,但第二个必须大写 -->
+	<!-- 配置一对一 -->
+	<resultMap type="RepertoryList" id="Repertory">
+		<!-- 主表 -->
+		<id property="shopId" column="shop_id"/>
+		<result property="listName" column="list_name"/>
+		<result property="listCode" column="list_code"/>
+		<result property="listPrice" column="list_price"/>
+		<result property="listStatus" column="list_status"/>
+		<result property="listBegindate" column="list_begindate"/>
+		<result property="listEnddate" column="list_enddate"/>
+		
+		<!-- 从表 -->
+		<association property="repertoryCount" javaType="RepertoryCount">
+			<id property="shopId" column="shop_id"/>
+			<result property="countNumber" column="count_number"/>
+		</association>
+	</resultMap>
+	
+	<select id="repertorySelect" parameterType="RepertoryDto" resultMap="Repertory">
+		SELECT l.*, c.count_number FROM repertory_list l INNER JOIN repertory_count c ON l.shop_id = c.shop_id
+		<where>
+			<!-- 商品名 -->
+			<if test="listName != null and listName != ''">
+				and l.list_name like '%${listName}%'
+			</if>
+			
+			<!-- 商品价格前区间+商品价格后区间-->
+			<if test="listBeginPrice != null and listEndPrice != null">
+				and l.list_price BETWEEN #{listBeginPrice} AND #{listEndPrice}
+			</if>
+			
+			<!-- 商品状态 -->
+			<if test="listStatus != null">
+				and l.list_status = #{listStatus}
+			</if>
+			
+			<!-- 开售时间 -->
+			<if test="listBegindate !=null and listBegindate !='' ">
+				<!-- >= -->
+				and l.list_begindate &gt;= #{listBegindate}
+			</if>
+			
+			<!-- 下架时间 -->
+			<if test="listEnddate !=null and listEnddate !=''">
+				<!-- <= -->
+				and l.list_enddate &lt;= #{listEnddate}
+			</if>
+		</where>
+	</select>
+	
+	
+	
+	<!-- 添加商品 -->
+	<insert id="repertoryAdd" parameterType="RepertoryCount" keyProperty="shopId" useGeneratedKeys="true">
+		INSERT INTO repertory_list(list_name,list_code,list_price,list_status,list_begindate,list_enddate) 
+		VALUES(#{listName},#{listCode},#{listPrice},#{listStatus},#{listBegindate},#{listEnddate})
+	</insert>
+	
+	
+	<!-- 添加对应商品id的库存 -->
+	<insert id="repertoryAddCount" parameterType="RepertoryCount">
+		INSERT INTO repertory_count(shop_id,count_number) 
+		VALUES(#{shopId},#{countNumber})
+	</insert>
+	
+	
+	
+	
+	<!-- 查询商品贩卖结束时间小于当前时间的商品id -->
+	<select id="selectDateCron" parameterType="DateCronDto" resultType="DateCronDto">
+		SELECT shop_id AS shopId 
+		FROM repertory_list 
+		WHERE <!-- list_status = 0  -->
+		<!-- AND --> list_enddate &lt; #{nowDate} 
+	</select>
+	
+	
+	
+	<update id="updateDateCron" parameterType="list">
+		UPDATE repertory_list 
+		SET list_status = 1 
+		WHERE shop_id IN
+		<foreach collection="list" item="shopId" open="(" close=")" separator=",">
+			#{shopId}
+		</foreach>
+	</update>
+	
+	
+</mapper>
+
+
+
+
+
+
+

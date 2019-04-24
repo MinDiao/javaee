@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 第一个springbean 
+			class: 对应的类
+			id: 唯一标识
+			等同于: Person p = new Person(); contain.map.put("person",new Person());
+	-->
+	<bean id="person" class="com.zw.bean.Person"></bean>
+	
+	
+	<!-- spring注入
+			注入时: 属性必须有对象的setter方法
+	 -->
+	<bean id="user" class="com.zw.bean.User">
+		<!-- property: 当前配置的类的属性
+				name: 实体类中属性的名字
+				value: 注入的值
+		 -->
+		<!-- int类型注入 -->
+		<property name="age" value="22"></property>
+		
+		<!-- String类型注入 -->
+		<property name="name" value="jack"></property>
+		
+		<!-- list类型注入 -->
+		<property name="list">
+			<list>
+				<value>篮球</value>
+				<value>跑步</value>
+			</list>
+		</property>
+		
+		<!-- map类型注入 -->
+		<property name="map">
+			<map>
+				<entry key="java" value="100"></entry>
+				<entry key="hadoop" value="80"></entry>
+			</map>
+		</property>
+		
+		
+		<!-- property注入其它类
+				ref: 指向其它的bean的id
+		 -->
+		<property name="car" ref="car"></property>
+		
+	</bean>
+	
+	
+	
+	<!-- 小汽车 -->
+	<!-- 作用域 scope
+			默认为singleton: 单例模式,只有一份实例,缺省就是singleton
+			prototype: 原型模式,每次通过spring容器来获取springbean时,容器都会创建一个新的实例进行返回
+			request: 同一请求是同一个实例
+			session: 同一个会话是同一个实例
+	 -->
+	<bean id="car" class="com.zw.bean.Car" scope="prototype">
+		<property name="name" value="bmw"></property>
+	</bean>
+	
+	
+</beans>

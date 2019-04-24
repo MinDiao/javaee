@@ -1,0 +1,14 @@
+package com.jdm.jdmshop.service.impl;
+
+import com.jdm.jdmshop.pojo.Picture;
+import com.jdm.jdmshop.service.PictureService;
+
+public class PictureServiceImpl implements PictureService {
+
+	@Override
+	public Picture Select(Picture picture) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

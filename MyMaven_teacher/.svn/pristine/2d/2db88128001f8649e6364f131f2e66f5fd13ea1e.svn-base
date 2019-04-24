@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zw.MyMaven.mapper.UserMapper">
+
+	<select id="selectById" parameterType="int" resultType="user">
+		select * from user where id = #{id}
+	</select>
+	
+	<select id="selectPage" parameterType="UserDto" resultType="user">
+		select * from user 
+		<where>
+			<if test="sex!=null and sex!=''">
+				and sex = #{sex}
+			</if>
+		</where>
+	</select>
+
+</mapper>

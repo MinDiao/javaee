@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;filter&apos; to &apos;zw_repertory&apos;&#x0D;&#x0A;- Original project: &apos;jdm&apos;&#x0D;&#x0A;- Destination element: &apos;zw_repertory&apos;&#x0D;&#x0A;- Original element: &apos;filter&apos;" description="Copy folder" element1="src/main/java/com/jdm/jdmshop/filter" files="0" flags="589830" folders="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1549636356235" target="/zw_repertory_layui/src/main/java/com/zw/zw_repertory" units="0" version="1.0"/>
+</session>

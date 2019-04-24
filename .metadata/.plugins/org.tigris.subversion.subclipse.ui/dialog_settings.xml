@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="627" key="ExportRemoteFolderDialog.location.x"/>
+	<item value="413" key="DifferencesDialog.location.y"/>
+	<item value="341" key="ExportRemoteFolderDialog.location.y"/>
+	<item value="" key="DirectorySelectionPage.lastParent_http://172.17.46.210:9999/svn/zw/student/%E5%88%98%E9%94%A6%E8%8D%A3"/>
+	<item value="182" key="HistoryTableProvider.HistoryDialog.注释"/>
+	<item value="128" key="HistoryTableProvider.SVNHistoryPage.作者"/>
+	<item value="" key="DirectorySelectionPage.lastParent_http://172.17.46.210:9999/svn/zw/student/%E5%88%98%E9%94%A6%E8%8D%A3/%E7%A9%BAmaven%E7%9A%84ssm%E7%89%88%E7%9B%AE%E5%BD%95"/>
+	<item value="320" key="HistoryTableProvider.SVNHistoryPage.注释"/>
+	<item value="1284" key="HistoryDialog.location.x"/>
+	<item value="586" key="HistoryDialog.location.y"/>
+	<item value="" key="DirectorySelectionPage.lastParent_http://172.17.46.210:9999/svn/zw/student/%E5%88%98%E9%94%A6%E8%8D%A3/zw_mvnljrssm"/>
+	<item value="393" key="RevertDialog.size.y"/>
+	<item value="1332" key="DifferencesDialog.size.x"/>
+	<item value="161" key="HistoryTableProvider.SVNHistoryPage.日期"/>
+	<item value="73" key="HistoryTableProvider.HistoryDialog.作者"/>
+	<item value="525" key="RevertDialog.size.x"/>
+	<item value="407" key="DifferencesDialog.size.y"/>
+	<item value="442" key="DifferencesDialog.location.x"/>
+	<item value="92" key="HistoryTableProvider.HistoryDialog.日期"/>
+	<item value="333" key="HistoryDialog.weights.0"/>
+	<item value="0" key="CommitDialog.location.y"/>
+	<item value="650" key="CommitDialog.location.x"/>
+	<item value="333" key="HistoryDialog.weights.2"/>
+	<item value="37" key="HistoryTableProvider.HistoryDialog.修订"/>
+	<item value="" key="DirectorySelectionPage.lastParent_http://172.17.46.210:9999/svn/zw/student/%E5%88%98%E9%94%A6%E8%8D%A3/%E7%94%A8%E6%88%B7%E4%BD%9C%E4%B8%9Assm%E7%89%88"/>
+	<item value="333" key="HistoryDialog.weights.1"/>
+	<item value="1138" key="RevertDialog.location.x"/>
+	<item value="500" key="CommitDialog.weights.0"/>
+	<item value="500" key="CommitDialog.weights.1"/>
+	<item value="258" key="RevertDialog.location.y"/>
+	<item value="1040" key="CommitDialog.size.y"/>
+	<item value="1270" key="CommitDialog.size.x"/>
+	<item value="1236" key="ExportRemoteFolderDialog.size.x"/>
+	<item value="269" key="ExportRemoteFolderDialog.size.y"/>
+	<item value="http://172.17.46.210:9999/svn/zw/student/%E5%88%98%E9%94%A6%E8%8D%A3" key="RepositorySelectionPage.lastRepository"/>
+	<item value="110" key="HistoryTableProvider.SVNHistoryPage.修订"/>
+	<item value="400" key="HistoryDialog.size.x"/>
+	<item value="400" key="HistoryDialog.size.y"/>
+	<section name="CommitWizard">
+		<item value="500" key="VWeight2"/>
+		<item value="500" key="VWeight1"/>
+		<item value="false" key="ShowCompare"/>
+	</section>
+	<section name="NewLocationWizard">
+		<list key="ConfigurationWizardMainPage.STORE_URL_ID">
+			<item value="http://172.17.46.210:9999/svn/zw/student/刘锦荣"/>
+			<item value="http://172.17.46.210:9999/svn/zw/student/刘锦荣/zw_mvnljrssm"/>
+			<item value="http://172.17.46.210:9999/svn/zw/student/刘锦荣/用户作业ssm版"/>
+			<item value=""/>
+		</list>
+	</section>
+</section>

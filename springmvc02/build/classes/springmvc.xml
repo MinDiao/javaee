@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 注解扫描包
+			后面不能加.* 否则匹配的是后面的包
+	 -->
+	<context:component-scan base-package="cn.controller"></context:component-scan>
+	
+	<!-- 升级版:会提供支持注解开发的映射器和适配器
+			自动提供注解开发的映射器和适配器,因为有些老版本底层不会自动提供
+			还提供了对json支持, 数据绑定的支持
+	 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+
+	<!-- 注解方式的处理映射器和处理适配器可以不用写,底层默认已经帮声明好 -->
+	<!-- 处理映射器
+			支持注解的,对处理器中的带有 @RequestMapping 方法的进行映射,与请求url进行匹配
+	 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean> -->
+	
+	<!-- 处理器适配器
+			支持注解的,带有 @RequestMapping 方法的进行适配和执行
+	 -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean> -->
+	
+	<!-- 视图解析器 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 设置视图信息前缀 -->
+		<property name="prefix" value="/WEB-INF/jsps/"></property>
+		<!-- 设置视图信息后缀 -->
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+</beans>
