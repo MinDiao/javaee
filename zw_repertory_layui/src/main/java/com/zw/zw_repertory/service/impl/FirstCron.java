@@ -1,0 +1,98 @@
+package com.zw.zw_repertory.service.impl;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import com.zw.zw_repertory.dto.DateCronDto;
+import com.zw.zw_repertory.mapper.RepertoryMapper;
+
+/**
+ * 
+ * 类描述：task定时任务-任务调度
+ * 作者： LiuJinrong  
+ * 创建日期：2019年1月1日
+ * 修改人：
+ * 修改日期：
+ * 修改内容：
+ * 版本号： 1.0.0
+ */
+@Service
+public class FirstCron {
+
+	private static final Logger logger = LoggerFactory.getLogger(FirstCron.class);
+
+	// 注入库存mapper
+	@Autowired
+	private RepertoryMapper repertoryMapper;
+
+	
+	/**
+	 * 
+	 * 方法描述:查询
+	 */
+	@Scheduled(cron = "0/10 * * * * ?")
+	public void selectCron(){
+		//System.err.println("任务调度task执行中。。。");
+
+		// 初始化当前时间
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String format = sdf.format(new Date());
+
+		// 初始化任务调度对象
+		DateCronDto dcd = new DateCronDto();
+		dcd.setNowDate(format);
+
+		// 执行查询商品贩卖结束时间小于当前时间的商品并返回商品id的方法
+		List<DateCronDto> list = repertoryMapper.selectDateCron(dcd);
+
+
+		// 判断是否存在再执行
+		if (list != null) {
+			// 执行更新方法
+			updateCron(list);
+		}
+	}
+
+	
+	/**
+	 * 
+	 * 方法描述: 更新
+	 * @param list
+	 */
+	public void updateCron(List<DateCronDto> list){
+		// 初始化填充符合条件商品id的List集合
+		List<Integer> arrayList = new ArrayList<Integer>();
+
+		// 遍历出符合任务调度条件的商品id
+		for (DateCronDto dateCronDto : list) {
+			//System.out.println(dateCronDto.getShopId());
+			arrayList.add(dateCronDto.getShopId());
+
+		}
+		// 执行更新商品状态方法
+		repertoryMapper.updateDateCron(arrayList);
+	}
+	
+	
+	
+	/**
+	 * 更新完毕后停止更新
+	 *	// TODO
+	 */
+
+}
+
+
+
+
+
+
+
